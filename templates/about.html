@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container">
+    <h1>About Us</h1>
+    <p>Welcome to our real estate website! We are a team of experienced professionals who are dedicated to helping you find your dream home or sell your current property. Whether you're a first-time buyer or an experienced investor, we have the expertise and resources to guide you through the entire process.</p>
+    <p>Our website features a wide range of properties, including houses, apartments, condos, and commercial properties, in various locations across the city. You can browse through our listings to find the perfect property that meets your unique needs and preferences. Our detailed property descriptions and high-quality photos give you a clear and accurate representation of each property.</p>
+    <p>We understand that buying or selling a property can be a complex and time-consuming process, which is why we provide comprehensive support throughout the entire transaction. Our team of agents will work closely with you to understand your goals, provide valuable insights and advice, and help you navigate the legal and financial aspects of the transaction.</p>
+    <p>At our real estate website, we believe in providing exceptional service and building long-lasting relationships with our clients. We are committed to ensuring your satisfaction and exceeding your expectations. Contact us today to learn more about how we can help you achieve your real estate goals.</p>
+    <h2>Our Team</h2>
+    <div class="row">
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card">
+          <img src="{% static 'img/smoking_programmer.png' %}" class="card-img-top" alt="Team Member">
+          <div class="card-body">
+            <h5 class="card-title">Mohammadreza Khoobbakht</h5>
+            <p class="card-text">Backend Developer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

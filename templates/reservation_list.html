@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Reservations</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Estate Name</th>
+          <th>Check-in Date</th>
+          <th>Check-out Date</th>
+          <th>Reserved On</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reservation in reservations %}
+          <tr>
+            <td><a href="{% url 'realestate:reservation_detail' reservation.pk %}">{{ reservation.estate.name }}</a></td>
+            <td>{{ reservation.check_in_date }}</td>
+            <td>{{ reservation.check_out_date }}</td>
+            <td>{{ reservation.created_at }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="4">No reservations found.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
+

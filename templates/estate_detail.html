@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container my-5">
+    <h1>{{ estate.name }}</h1>
+    <div class="row my-3">
+      <div class="col-md-8">
+        <img src="{{ estate.photo.url }}" class="img-fluid" alt="{{ estate.name }}">
+        <p class="my-3">{{ estate.description }}</p>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Estate Details</h5>
+            <p class="card-text">City: {{ estate.city }}</p>
+            <p class="card-text">State: {{ estate.state }}</p>
+            <p class="card-text">Square Feet: {{ estate.sqft }}</p>
+            <p class="card-text">Price: {{ estate.price }}</p>
+            <p class="card-text">Bedrooms: {{ estate.bedrooms }}</p>
+            <p class="card-text">Bathrooms: {{ estate.bathrooms }}</p>
+            <a href="{% url 'realestate:add_reservation' estate_id=estate.id %}" class="btn btn-primary">Reserve this Estate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Check-in Date</th>
+          <th scope="col">Check-out Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reservation in reservations %}
+          <tr>
+            <td>{{ reservation.check_in_date }}</td>
+            <td>{{ reservation.check_out_date }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3">No reservations found for this estate.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+  </div>
+{% endblock %}

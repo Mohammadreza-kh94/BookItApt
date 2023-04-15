@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h2 class="card-title mb-4">Reservation Details</h2>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th scope="row">Reservation ID</th>
+                <td>{{ reservation.id }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Estate Name</th>
+                <td>{{ reservation.estate.name }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Check-in Date</th>
+                <td>{{ reservation.check_in_date }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Check-out Date</th>
+                <td>{{ reservation.check_out_date }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Name</th>
+                <td>{{ reservation.name }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Phone</th>
+                <td>{{ reservation.phone }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Reserved on</th>
+                <td>{{ reservation.created_at }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="{% url 'realestate:estate_list' %}" class="btn btn-primary">Back to Reservations</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
