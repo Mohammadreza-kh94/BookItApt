@@ -20,8 +20,12 @@ from django.urls import include, path
 
 from realestate.views import index
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", index, name="index"),
-    path("realestate/", include("realestate.urls"), name="realestate"),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        path("", index, name="index"),
+        path("realestate/", include("realestate.urls"), name="realestate"),
+    ]
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)
