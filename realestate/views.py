@@ -1,9 +1,8 @@
-from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 
-from .forms import EstateForm, ReservationForm
+from .forms import ReservationForm
 from .models import Estate, Reservation
 
 
@@ -26,7 +25,6 @@ def add_reservation(request, estate_id):
             reservation = form.save(commit=False)
             reservation.estate = estate
             reservation.save()
-            print(reservation.pk)
             return redirect("/realestate/reservation_detail/{}".format(reservation.pk))
     else:
         form = ReservationForm()
@@ -82,7 +80,6 @@ def add_estate(request):
         bathrooms = request.POST["bathrooms"]
         photo = request.FILES.get("photo")
 
-        # Create a new Estate object with the provided data
         new_estate = Estate(
             name=name,
             description=description,
@@ -97,19 +94,6 @@ def add_estate(request):
         new_estate.save()
 
         messages.success(request, "Estate created successfully!")
-        return redirect("/realestate/estate_list")  # Replace with the name of your estates list view
+        return redirect("/realestate/estate_list")
 
-    return render(request, "add_estate.html")  # Replace with the name of your create estate template
-
-
-# def add_estate(request):
-#     if request.method == "POST":
-#         form = EstateForm(request.POST)
-#         if form.is_valid():
-#             estate = form.save(commit=False)
-#             estate.created_by = request.user
-#             estate.save()
-#             return redirect("estate_detail", pk=estate.pk)
-#     else:
-#         form = EstateForm()
-#     return render(request, "add_estate.html", {"form": form})
+    return render(request, "add_estate.html")
